@@ -48,7 +48,6 @@ winHeader.appendChild(resetButton);
 /* -------- Functionality -------- */
 
 const boxes = document.querySelectorAll(".box");
-//const playerBoxes = document.querySelectorAll(".players");
 const player1box = document.querySelector("#player1");
 const player2box = document.querySelector("#player2");
 let player1name;
@@ -57,7 +56,6 @@ let player1turn = false;
 let player2turn = false;
 let thereIsAWinner = false;
 
-//let boxIndex;
 
 let boardState = ["none", "none", "none", "none", "none", "none", "none", "none", "none"];
 
@@ -71,7 +69,6 @@ vsCpuButton.addEventListener("click", () => {
     startDiv.setAttribute("style", "display: none;");
 
     for(let i = 0; i < boxes.length; i++){
-        //boxIndex = boxes.findIndex(box);
         let box = boxes[i];
 
         boxes[i].addEventListener('mouseover', event => {
@@ -122,7 +119,6 @@ twoPlayersButton.addEventListener("click", () => {
     startDiv.setAttribute("style", "display: none;");
 
     for(let i = 0; i < boxes.length; i++){
-        //boxIndex = boxes.findIndex(box);
         let box = boxes[i];
 
         boxes[i].addEventListener('mouseover', event => {
@@ -165,7 +161,6 @@ twoPlayersButton.addEventListener("click", () => {
     }
 });
 
-//document.querySelector("#reset")
 resetButton.addEventListener("click", () => {
     boardState = ["none", "none", "none", "none", "none", "none", "none", "none", "none"];
     for(let i = 0; i < boxes.length; i++){
