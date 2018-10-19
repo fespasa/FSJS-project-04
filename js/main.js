@@ -73,6 +73,70 @@ vsCpuButton.addEventListener("click", () => {
         //boxIndex = boxes.findIndex(box);
         let box = boxes[i];
 
+        boxes[i].addEventListener('mouseover', event => {
+            if (boardState[i] === "none") {
+                if (player1turn) {
+                    event.target.style.backgroundImage = "url('img/o.svg')";
+                } else {
+                    event.target.style.backgroundImage = "url('img/x.svg')";
+                }
+            }
+        });
+
+        boxes[i].addEventListener('mouseleave', event => {
+            if (boardState[i] === "none") {
+                event.target.removeAttribute("style");
+            }
+        });
+
+        box.addEventListener("click", () => {
+            if(boardState[i]==="none"){
+                if(player1turn){
+                    box.classList.add("box-filled-1");
+                    boardState[i] = 1;
+                    if(comprovation(i)){
+                        winner(1);
+                    }
+                    changePlayerTurn(2);
+                } else {
+                    alert("Something went wrong!");
+                }
+                cpuPlays();
+            }
+        });
+    }
+});
+
+twoPlayersButton.addEventListener("click", () => {
+    player1name = prompt("What's Player 1 name?");
+    player2name = prompt("What's Player 2 name?");
+
+    setPlayersTag(player1name, player2name);
+
+    changePlayerTurn(1);
+
+    startDiv.setAttribute("style", "display: none;");
+
+    for(let i = 0; i < boxes.length; i++){
+        //boxIndex = boxes.findIndex(box);
+        let box = boxes[i];
+
+        boxes[i].addEventListener('mouseover', event => {
+            if (boardState[i] === "none") {
+                if (player1turn) {
+                    event.target.style.backgroundImage = "url('img/o.svg')";
+                } else {
+                    event.target.style.backgroundImage = "url('img/x.svg')";
+                }
+            }
+        });
+
+        boxes[i].addEventListener('mouseleave', event => {
+            if (boardState[i] === "none") {
+                event.target.removeAttribute("style");
+            }
+        });
+
         box.addEventListener("click", () => {
             if(boardState[i]==="none"){
                 if(player1turn){
@@ -86,7 +150,7 @@ vsCpuButton.addEventListener("click", () => {
                     box.classList.add("box-filled-2");
                     boardState[i] = 2;
                     if(comprovation(i)){
-                        winner("CPU");
+                        winner(2);
                     }
                     changePlayerTurn(1);
                 } else {
@@ -103,11 +167,28 @@ resetButton.addEventListener("click", () => {
     for(let i = 0; i < boxes.length; i++){
         boxes[i].removeAttribute("class");
         boxes[i].setAttribute("class", "box");
-
+        boxes[i].removeAttribute("style");
         changePlayerTurn(1);
     }
     winDiv.style.display = "none";
 });
+
+function cpuPlays() {
+    let choice = getRandomIntInclusive(0,8);
+    while(boardState[choice]!="none"){
+        choice = getRandomIntInclusive(0,8);
+    }
+    boardState[choice] = 2;
+    boxes[choice].classList.add("box-filled-2");
+    if(comprovation(choice)){
+        winner("CPU");
+    }
+    changePlayerTurn(1);
+}
+
+function getRandomIntInclusive(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function setPlayersTag(player1, player2){
     let player1tag = document.createElement("P");
