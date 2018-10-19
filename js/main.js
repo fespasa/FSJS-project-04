@@ -72,7 +72,7 @@ vsCpuButton.addEventListener("click", () => {
     for(let i = 0; i < boxes.length; i++){
         //boxIndex = boxes.findIndex(box);
         let box = boxes[i];
-        
+
         box.addEventListener("click", () => {
             if(boardState[i]==="none"){
                 if(player1turn){
@@ -197,6 +197,9 @@ function comprovation(iterator) {
             if((boardState[6] === boardState[7] && boardState[8] === boardState[6]) || (boardState[0] === boardState[4] && boardState[8] === boardState[0]) || (boardState[2] === boardState[5] && boardState[8] === boardState[2])){
                 return true;
             } else {
+                if(boardState.indexOf("none") === -1){
+                    winner("tie");
+                }
                 return false;
             }
             break;
@@ -213,8 +216,10 @@ function winner(player) {
     } else if(player === 2){
         winH1.innerHTML = player2name + " wins!";
         winDiv.setAttribute("class", "screen screen-win screen-win-two");
+    } else if(player === "tie") {
+        winH1.innerHTML = "It's a tie!";
+        winDiv.setAttribute("class", "screen screen-win screen-win-tie");
     }
-
     winDiv.removeAttribute("style");
 }
 
