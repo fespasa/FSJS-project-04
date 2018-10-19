@@ -55,6 +55,7 @@ let player1name;
 let player2name;
 let player1turn = false;
 let player2turn = false;
+let thereIsAWinner = false;
 
 //let boxIndex;
 
@@ -96,12 +97,15 @@ vsCpuButton.addEventListener("click", () => {
                     boardState[i] = 1;
                     if(comprovation(i)){
                         winner(1);
+                        thereIsAWinner = true;
                     }
                     changePlayerTurn(2);
                 } else {
                     alert("Something went wrong!");
                 }
-                cpuPlays();
+                if(thereIsAWinner === false) {
+                    cpuPlays();
+                }
             }
         });
     }
@@ -170,6 +174,7 @@ resetButton.addEventListener("click", () => {
         boxes[i].removeAttribute("style");
         changePlayerTurn(1);
     }
+    thereIsAWinner = false;
     winDiv.style.display = "none";
 });
 
