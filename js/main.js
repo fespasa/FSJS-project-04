@@ -227,6 +227,9 @@ function comprovation(iterator) {
             if((boardState[1] === boardState[2] && boardState[0] === boardState[1]) || (boardState[3] === boardState[6] && boardState[0] === boardState[3]) || (boardState[4] === boardState[8] && boardState[0] === boardState[4])){
                 return true;
             } else {
+                if(boardState.indexOf("none") === -1){
+                    winner("tie");
+                }
                 return false;
             }
             break;
@@ -234,6 +237,9 @@ function comprovation(iterator) {
             if((boardState[1] === boardState[2] && boardState[0] === boardState[1]) || (boardState[1] === boardState[4] && boardState[1] === boardState[7])){
                 return true;
             } else {
+                if(boardState.indexOf("none") === -1){
+                    winner("tie");
+                }
                 return false;
             }
             break;
@@ -241,6 +247,9 @@ function comprovation(iterator) {
             if((boardState[1] === boardState[2] && boardState[0] === boardState[1]) || (boardState[5] === boardState[2] && boardState[2] === boardState[8]) || (boardState[4] === boardState[2] && boardState[4] === boardState[6])){
                 return true;
             } else {
+                if(boardState.indexOf("none") === -1){
+                    winner("tie");
+                }
                 return false;
             }
             break;
@@ -248,6 +257,9 @@ function comprovation(iterator) {
             if((boardState[3] === boardState[4] && boardState[5] === boardState[3]) || (boardState[3] === boardState[0] && boardState[6] === boardState[3])){
                 return true;
             } else {
+                if(boardState.indexOf("none") === -1){
+                    winner("tie");
+                }
                 return false;
             }
             break;
@@ -255,6 +267,9 @@ function comprovation(iterator) {
             if((boardState[3] === boardState[4] && boardState[5] === boardState[3]) || (boardState[1] === boardState[4] && boardState[7] === boardState[1]) || (boardState[0] === boardState[4] && boardState[8] === boardState[0])){
                 return true;
             } else {
+                if(boardState.indexOf("none") === -1){
+                    winner("tie");
+                }
                 return false;
             }
             break;
@@ -262,6 +277,9 @@ function comprovation(iterator) {
             if((boardState[3] === boardState[4] && boardState[5] === boardState[3]) || (boardState[2] === boardState[8] && boardState[5] === boardState[8])){
                 return true;
             } else {
+                if(boardState.indexOf("none") === -1){
+                    winner("tie");
+                }
                 return false;
             }
             break;
@@ -269,6 +287,9 @@ function comprovation(iterator) {
             if((boardState[6] === boardState[7] && boardState[8] === boardState[6]) || (boardState[6] === boardState[4] && boardState[2] === boardState[6]) || (boardState[6] === boardState[3] && boardState[0] === boardState[6])){
                 return true;
             } else {
+                if(boardState.indexOf("none") === -1){
+                    winner("tie");
+                }
                 return false;
             }
             break;
@@ -276,6 +297,9 @@ function comprovation(iterator) {
             if((boardState[6] === boardState[7] && boardState[8] === boardState[6]) || (boardState[1] === boardState[7] && boardState[1] === boardState[4])){
                 return true;
             } else {
+                if(boardState.indexOf("none") === -1){
+                    winner("tie");
+                }
                 return false;
             }
             break;
